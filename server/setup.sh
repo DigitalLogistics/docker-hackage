@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ADMIN_USER=admin
+ADMIN_PASS=admin
+BUILD_RUN_TIME=30
+BUILD_INTERVAL=5
+BUILD_CACHE=build-cache
+DATADIR=/hackage
+PORT=9090
