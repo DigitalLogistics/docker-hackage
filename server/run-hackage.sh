@@ -5,7 +5,7 @@
 DATADIR=$1
 set -e
 
-# Delete stale lock files
+# Delete stale lock files and build cache
 find $DATADIR -name "open.lock" -exec sudo rm {} \;
 sudo rm -rf $DATADIR/build-cache
 
@@ -28,7 +28,7 @@ sleep 5 # TODO: poll until web server comes up
 
 docker run -t -d --volumes-from $server_id boothead/hackage-build
 
-# docker run boothead/hackage-base sh -c "echo -e \"${ADMIN_USER}\n${ADMIN_PASS}\n\" | hackage-build init http://${server_ip}:8080 http://hackage.hackell.org; hackage-build build -vv --run-time=${BUILD_RUN_TIME} --interval=${BUILD_INTERVAL} --continuous"
+docker run -t -d --volumes-from $server_id boothead/hackage-mirror
 
-echo "You can access your local hackage at http://localhost:${PORT}"
+echo "You can access your local hackage at http://127.0.0.1:${server_local_port}"
 
