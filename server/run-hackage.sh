@@ -24,11 +24,13 @@ echo "http://${server_ip}:8080" > $DATADIR/server
 echo "http://hackage.haskell.org/" > $DATADIR/mirror.cfg
 echo "http://${ADMIN_USER}:${ADMIN_PASS}@${server_ip}:8080" >> $DATADIR/mirror.cfg
 
-sleep 5 # TODO: poll until web server comes up
+sleep 10 # TODO: poll until web server comes up
 
-docker run -t -d --volumes-from $server_id boothead/hackage-build
+echo "run \"docker run -t -d --volumes-from $server_id boothead/hackage-build\" for a package builder"
 
-docker run -t -d --volumes-from $server_id boothead/hackage-mirror
+echo "run \"docker run -t -d --volumes-from $server_id boothead/hackage-mirror\" for mirroring from hackage.haskell.org"
+
+# docker run -t -d --volumes-from $server_id boothead/hackage-mirror
 
 echo "You can access your local hackage at http://127.0.0.1:${server_local_port}"
 
