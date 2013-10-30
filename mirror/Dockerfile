@@ -6,4 +6,4 @@ ADD run.sh /run.sh
 
 VOLUME ["/hackage"]
 
-ENTRYPOINT ["/run.sh"]
+CMD ["/run.sh"]
