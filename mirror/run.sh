@@ -1,3 +1,3 @@
 #!/bin/bash
 
-hackage-mirror /hackage/mirror.cfg
+hackage-mirror /hackage/mirror.cfg --continuous
